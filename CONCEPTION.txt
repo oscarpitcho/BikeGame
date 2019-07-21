@@ -1,0 +1,32 @@
+CONCEPTION:
+
+Choix Des Extensions suggérées :
+*Trigger + Finish + Système d’objet « collectable » avec impact sur le gameplay
+*Pendule
+*Bascule
+*Puit de gravité
+*Terrains glissants
+*Pics immobilisant le vélo + mise en situation
+*Animation du cycliste : signe de victoire (bras levé), pédalage.
+
+Extensions en Bonus :
+*Modification du StickMan en un vrai personnage permettant donc l’ajout d’une interface au début du jeu qui autorise le joueur à choisir le personnage (male, female, zombie) de son choix (ceci a impliqué le recodage du pédalage et le signe de victoire).
+// (Le code du StickMan animé est encore présent en commentaire dans la classe Bike).
+
+Les Classes et Interfaces rajoutées à l’architecture de base : 
+*Interface Controller : interface implémentée par les acteurs susceptibles d’être détruites, elle renvoie donc une booléenne qui est prise en compte par la méthode destroy pour verifer si l’acteur doit être détruit ou pas.   
+*abstract class Trigger : Une super classe abstraite permettant des créer des GameEntities capable d’interagir avec le Bike. Elle hérite de GameEntity et implémente Actor et Timer
+* Interface Timer: est une interface permettant aux classes qui l’implementent d’utiliser l’Unix time.
+*Class Boost : héritant de la classe abstraite Trigger, est un acteur collectable ayant la forme d’une étoile et permettant d’accélérer le personnage pendant une durée donnée.
+*Class Coins : héritant de la classe abstraite Trigger, est un acteur collectable ayant la forme d’une pièce en bronze ou en or et qui te donne un certain nombre de points à ajouter au score final. 
+*Class Spikes : héritant de Trigger et implémentant Actor, est un acteur ayant l’apparence de pics et permet de ralentir le Bike pour une certaine durée de temps.
+*Class Spring : héritant de Trigger et implémentant Actor, est un acteur représenté par un ressort qui se déclenche au passage du vélo et après un certain temps il se rétracte.
+*Class GravityWell :  héritant de GameEntity et implémentant Actor, est un acteur définit par sa largeur et hauteur et par la force qu’elle applique dans le sens contraire du vecteur de champs de pesanteur et ainsi contrant la gravité.
+
+*Class Pendulum :  héritant de GameEntity et implementant Actor, est un acteur avec une RopeConstraint et est représenté par un pendule et présente un obstacle au Bike.
+*Class RotatingScale : héritant de GameEntity et implementant Actor, est un acteur avec une RevoluteConstraint et est représenté par une planche, instable ou qui fait des rotations automatiques et présente un obstacle au Bike.
+*Class ItsRainingDucks : héritant de GameEntity et implémentant Actor et Timer, est un acteur caractérisé par une pluie de canards qui tue le Bike, elle contient aussi une classe Duck héritant de GameEntity et implementant Actor et Timer et qui caractérise la GameEntity canard.
+
+
+
+
