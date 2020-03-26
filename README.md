@@ -1,4 +1,3 @@
-READ ME
 
 This game was coded during my first semester at EPFL in an introductory course to Java.
 
